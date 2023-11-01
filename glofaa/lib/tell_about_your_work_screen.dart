@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/personal_information_screen.dart';
 
 class TellAboutYourWorkScreen extends StatefulWidget {
   const TellAboutYourWorkScreen({super.key});
@@ -27,7 +26,7 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Tell us about your work",
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
@@ -38,12 +37,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
           children: [
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Card(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: const Card(
                 color: Color.fromRGBO(147, 76, 234, 1),
                 elevation: 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Text(
                     "How many years of experience do you have?",
                     style: TextStyle(
@@ -58,12 +57,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "0-1 years",
                       style: TextStyle(
@@ -83,18 +82,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "1-3 years",
                       style: TextStyle(
@@ -114,18 +113,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "More tha 3 years",
                       style: TextStyle(
@@ -145,17 +144,17 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Card(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: const Card(
                 color: Color.fromRGBO(147, 76, 234, 1),
                 elevation: 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Text(
                     "Where have you worked before?",
                     style: TextStyle(
@@ -170,12 +169,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Branded stores",
                       style: TextStyle(
@@ -195,18 +194,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Service Center",
                       style: TextStyle(
@@ -226,18 +225,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Local market shops/Own Business",
                       style: TextStyle(
@@ -259,12 +258,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Card(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: const Card(
                 color: Color.fromRGBO(147, 76, 234, 1),
                 elevation: 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Text(
                     "What is your current monthly earning?",
                     style: TextStyle(
@@ -279,12 +278,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Less than INR 20000",
                       style: TextStyle(
@@ -304,18 +303,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "INR 20000-40000",
                       style: TextStyle(
@@ -335,18 +334,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "INR 40000-80000",
                       style: TextStyle(
@@ -366,18 +365,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "More than INR 80000",
                       style: TextStyle(
@@ -399,12 +398,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Card(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: const Card(
                 color: Color.fromRGBO(147, 76, 234, 1),
                 elevation: 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Text(
                     "How many family members do you have?",
                     style: TextStyle(
@@ -419,12 +418,12 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Less than 3 members",
                       style: TextStyle(
@@ -444,18 +443,18 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: RadioListTile(
-                  tileColor: Color.fromRGBO(230, 210, 255, 1),
+                  tileColor: const Color.fromRGBO(230, 210, 255, 1),
                   controlAffinity: ListTileControlAffinity.trailing,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Service Center",
                       style: TextStyle(
@@ -475,7 +474,7 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                     });
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Row(
@@ -492,7 +491,7 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                             color: Color.fromRGBO(147, 76, 234, 1)),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    child: Text(
+                    child: const Text(
                       "Save",
                       maxLines: 1,
                       style: TextStyle(
@@ -527,8 +526,9 @@ class _TellAboutYourWorkScreenState extends State<TellAboutYourWorkScreen> {
                 ),
               ],
             ),
-
-            SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

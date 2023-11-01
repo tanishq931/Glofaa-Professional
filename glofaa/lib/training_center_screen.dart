@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/onboarding_documents_screen.dart';
 
 class TrainingCenterScreen extends StatefulWidget {
   const TrainingCenterScreen({super.key});
@@ -19,7 +18,7 @@ class _TrainingCenterScreenState extends State<TrainingCenterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-        (selected == 1)?"Training Center":"All Training",
+          (selected == 1) ? "Training Center" : "All Training",
           style: const TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
         ),
@@ -242,95 +241,115 @@ class _TrainingCenterScreenState extends State<TrainingCenterScreen> {
               ],
             ),
           ),
-
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Flexible(
                 child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5,
-                  mainAxisExtent: 250
-                ),
-                itemCount: 6,
-                itemBuilder: (_, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      decoration: ShapeDecoration(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        shadows: const [
-                          BoxShadow(
-                            color: Color(0x3F000000),
-                            blurRadius: 2,
-                            offset: Offset(0, 0),
-                            spreadRadius: 0,
-                          )
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-                            const SizedBox(height: 5,),
-                            Container(
-                              height: 60,
-                              decoration: ShapeDecoration(
-                                  color: const Color.fromRGBO(217, 217, 217, 1),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 5,
+                            mainAxisExtent: 250),
+                    itemCount: 6,
+                    itemBuilder: (_, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          decoration: ShapeDecoration(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            shadows: const [
+                              BoxShadow(
+                                color: Color(0x3F000000),
+                                blurRadius: 2,
+                                offset: Offset(0, 0),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 60,
+                                  decoration: ShapeDecoration(
+                                      color: const Color.fromRGBO(
+                                          217, 217, 217, 1),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10))),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Safety training - Ensuring partner safety at UC",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Poppins',
+                                      fontSize: 12),
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Safety",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'Poppins',
+                                      fontSize: 10),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Training on how does UC ensures partner safety and how to handle critical situations",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'Poppins',
+                                      fontSize: 10),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                    alignment: Alignment.centerRight,
+                                    child: (index % 2 == 0)
+                                        ? const Icon(
+                                            Icons.circle,
+                                            color:
+                                                Color.fromRGBO(65, 195, 63, 1),
+                                            size: 16,
+                                          )
+                                        : const Icon(
+                                            Icons.circle,
+                                            color:
+                                                Color.fromRGBO(242, 20, 20, 1),
+                                            size: 16,
+                                          ))
+                              ],
                             ),
-                            const SizedBox(height: 10,),
-                            const Text(
-                              "Safety training - Ensuring partner safety at UC",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 10,),
-                            const Text(
-                              "Safety",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 10),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 10,),
-                            const Text(
-                              "Training on how does UC ensures partner safety and how to handle critical situations",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 10),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-
-                            const SizedBox(height: 10,),
-                            
-                            Container(
-                              alignment: Alignment.centerRight,
-                                child:(index%2 ==0)? const Icon(Icons.circle, color: Color.fromRGBO(65, 195, 63, 1),size: 16,): const Icon(Icons.circle, color: Color.fromRGBO(242, 20, 20, 1),size: 16,))
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                }),
+                      );
+                    }),
               ),
             ),
           ),

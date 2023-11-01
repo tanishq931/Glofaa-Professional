@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/award_and_certificate_screen.dart';
 
 class BankDetailsScreen extends StatefulWidget {
   const BankDetailsScreen({super.key});
@@ -25,7 +24,7 @@ class _BankDetailsScreenState extends State<BankDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Bank Details",
             style: TextStyle(
                 fontWeight: FontWeight.w600,

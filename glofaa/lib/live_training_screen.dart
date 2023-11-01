@@ -24,7 +24,10 @@ class _LiveTrainingScreenState extends State<LiveTrainingScreen> {
             height: 30,
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const TrainingCenterScreen() ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TrainingCenterScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(147, 76, 234, 1),

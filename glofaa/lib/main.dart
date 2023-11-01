@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/complete_training_and_profile_screen.dart';
-import 'package:glofaa/page_view_screen.dart';
-import 'package:glofaa/profile_screen.dart';
-import 'package:glofaa/starter_kit_screen.dart';
+import 'package:glofaa/issue_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -99,7 +96,7 @@ class _MyStartPageState extends State<MyStartPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ProfileScreen()));
+                          builder: (context) => const IssueScreen()));
                 },
                 style: OutlinedButton.styleFrom(
                     elevation: 5,

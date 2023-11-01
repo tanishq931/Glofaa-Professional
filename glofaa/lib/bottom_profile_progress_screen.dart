@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:glofaa/account_details_screen.dart';
 import 'package:glofaa/award_and_certificate_screen.dart';
-import 'package:glofaa/bank_details_screen.dart';
 import 'package:glofaa/live_training_screen.dart';
 import 'package:glofaa/onboarding_documents_screen.dart';
 import 'package:glofaa/personal_information_screen.dart';
@@ -9,7 +8,7 @@ import 'package:glofaa/tell_about_your_work_screen.dart';
 import 'package:glofaa/verify_vaccination.dart';
 
 class BottomProfileProgressScreen extends StatelessWidget {
-  const  BottomProfileProgressScreen({super.key});
+  const BottomProfileProgressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +117,8 @@ class BottomProfileProgressScreen extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LiveTrainingScreen()));
+                                  builder: (context) =>
+                                      const LiveTrainingScreen()));
                         },
                       )
                     ],
@@ -168,7 +168,7 @@ class BottomProfileProgressScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const AccountDetailsScreen()));
+                                      const AccountDetailsScreen()));
                         },
                       )
                     ],
@@ -218,7 +218,7 @@ class BottomProfileProgressScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const AwardAndCertificateScreen()));
+                                      const AwardAndCertificateScreen()));
                         },
                       )
                     ],
@@ -268,7 +268,7 @@ class BottomProfileProgressScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const VerifyVaccinationScreen()));
+                                      const VerifyVaccinationScreen()));
                         },
                       )
                     ],
@@ -318,7 +318,7 @@ class BottomProfileProgressScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const TellAboutYourWorkScreen()));
+                                      const TellAboutYourWorkScreen()));
                         },
                       )
                     ],
@@ -368,7 +368,7 @@ class BottomProfileProgressScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const PersonalInformationScreen()));
+                                      const PersonalInformationScreen()));
                         },
                       )
                     ],

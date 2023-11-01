@@ -3,8 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>NSPhotoLibraryUsageDescription</key>
+    <string>photo lib for profile images</string>
     <key>NSCameraUsageDescription</key>
+    <string>capture profile photo</string>
     <key>NSMicrophoneUsageDescription</key>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
