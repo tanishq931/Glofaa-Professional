@@ -14,7 +14,7 @@ class _AwardAndCertificateScreenState extends State<AwardAndCertificateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Award And Certificate",
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
@@ -36,7 +36,7 @@ class _AwardAndCertificateScreenState extends State<AwardAndCertificateScreen> {
             height: 20,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.topLeft,
             child: const Text(
               "Type",
@@ -53,7 +53,7 @@ class _AwardAndCertificateScreenState extends State<AwardAndCertificateScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: TextButton(
               style: TextButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(230, 210, 255, 1),
+                  backgroundColor: const Color.fromRGBO(230, 210, 255, 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   )),
@@ -88,14 +88,13 @@ class _AwardAndCertificateScreenState extends State<AwardAndCertificateScreen> {
               ),
             ),
           ),
-          
           Container(
             height: 30,
             alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(right: 20.0),
+            padding: const EdgeInsets.only(right: 20.0),
             child: ElevatedButton(
               onPressed: () {
-             //   Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalInformationScreen()));
+                //   Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalInformationScreen()));
               },
               style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.zero,
@@ -113,21 +112,22 @@ class _AwardAndCertificateScreenState extends State<AwardAndCertificateScreen> {
               ),
             ),
           ),
-          
           Container(
             height: 120,
             width: 150,
-            padding: EdgeInsets.only(left: 20.0),
+            padding: const EdgeInsets.only(left: 20.0),
             child: Card(
               elevation: 0,
-              color: Color.fromRGBO(230, 210, 255, 1),
+              color: const Color.fromRGBO(230, 210, 255, 1),
               child: Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   alignment: Alignment.topRight,
-                  child: Icon(Icons.close_outlined, color: Color.fromRGBO(147, 76, 234, 1),)),
+                  child: const Icon(
+                    Icons.close_outlined,
+                    color: Color.fromRGBO(147, 76, 234, 1),
+                  )),
             ),
           ),
-
           Container(
             alignment: Alignment.topCenter,
             padding: const EdgeInsets.all(20),
@@ -138,12 +138,12 @@ class _AwardAndCertificateScreenState extends State<AwardAndCertificateScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const VerifyVaccinationScreen()));
+                          builder: (context) =>
+                              const VerifyVaccinationScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     elevation: 5,
-                    backgroundColor:
-                    const Color.fromRGBO(147, 76, 234, 1),
+                    backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 child: const Text(

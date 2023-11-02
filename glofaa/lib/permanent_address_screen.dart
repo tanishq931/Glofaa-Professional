@@ -19,7 +19,7 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Permanent Address",
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
@@ -33,12 +33,13 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
             children: [
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(147, 76, 234, 1),
+                  color: const Color.fromRGBO(147, 76, 234, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
+                child: const Text(
                   "Future Orders will be delivered on this address",
                   style: TextStyle(
                       color: Colors.white,
@@ -47,9 +48,9 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
                       fontSize: 14),
                 ),
               ),
-
-              SizedBox(height: 15,),
-
+              const SizedBox(
+                height: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -125,7 +126,6 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
                   ),
                 ],
               ),
-
               const SizedBox(
                 height: 15,
               ),
@@ -158,7 +158,6 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
                       )),
                 ),
               ),
-
               const SizedBox(
                 height: 15,
               ),
@@ -223,7 +222,9 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
                       )),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -314,8 +315,7 @@ class _PermanentAddressScreenState extends State<PermanentAddressScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                         elevation: 5,
-                        backgroundColor:
-                        const Color.fromRGBO(147, 76, 234, 1),
+                        backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     child: const Text(

@@ -42,7 +42,7 @@ class _LoansScreenState extends State<LoansScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Loans",
             style: TextStyle(
                 fontWeight: FontWeight.w600,
@@ -52,7 +52,7 @@ class _LoansScreenState extends State<LoansScreen> {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -69,21 +69,21 @@ class _LoansScreenState extends State<LoansScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      tileColor: Color.fromRGBO(230, 210, 255, 1),
+                      tileColor: const Color.fromRGBO(230, 210, 255, 1),
                       leading: Icon(
                         iconList[index],
-                        color: Color.fromRGBO(147, 76, 234, 1),
+                        color: const Color.fromRGBO(147, 76, 234, 1),
                       ),
                       title: Text(
                         list[index],
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color.fromRGBO(147, 76, 234, 1),
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Poppins',
                             fontSize: 16),
                       ),
                       trailing: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.keyboard_arrow_right_outlined,
                           color: Color.fromRGBO(147, 76, 234, 1),
                         ),
@@ -103,25 +103,25 @@ class _LoansScreenState extends State<LoansScreen> {
   void onTap(int index) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       if (index == 0) {
-        return IdentitySectionScreen(isAadharScreen: true);
+        return const IdentitySectionScreen(isAadharScreen: true);
       } else if (index == 1) {
-        return IdentitySectionScreen(isPanCardScreen: true);
+        return const IdentitySectionScreen(isPanCardScreen: true);
       } else if (index == 2) {
-        return PermanentAddressScreen();
+        return const PermanentAddressScreen();
       } else if (index == 3) {
-        return CurrentAddressScreen();
+        return const CurrentAddressScreen();
       } else if (index == 4) {
-        return IdentitySectionScreen(isNachScreen: true);
+        return const IdentitySectionScreen(isNachScreen: true);
       } else if (index == 5) {
-        return IdentitySectionScreen(isSignedChequeScreen: true);
+        return const IdentitySectionScreen(isSignedChequeScreen: true);
       } else if (index == 6) {
-        return IdentitySectionScreen(isBankStatementScreen: true);
+        return const IdentitySectionScreen(isBankStatementScreen: true);
       } else if (index == 7) {
-        return IdentitySectionScreen(isPassbookScreen: true);
+        return const IdentitySectionScreen(isPassbookScreen: true);
       } else if (index == 8) {
-        return IdentitySectionScreen();
+        return const IdentitySectionScreen();
       }
-      return IdentitySectionScreen(isCancelledScreen: true);
+      return const IdentitySectionScreen(isCancelledScreen: true);
     }));
   }
 }

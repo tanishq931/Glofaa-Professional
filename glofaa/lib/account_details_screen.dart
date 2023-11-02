@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:glofaa/bank_details_screen.dart';
-import 'package:glofaa/tell_about_your_work_screen.dart';
-import 'package:glofaa/tell_about_yourself.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
   const AccountDetailsScreen({super.key});
@@ -15,7 +13,7 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Account Details",
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
@@ -23,7 +21,7 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -33,16 +31,14 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
                 width: 250,
                 height: 250,
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 30.0),
+            margin: const EdgeInsets.symmetric(horizontal: 30.0),
             child: ElevatedButton(
-              onPressed: () {
-
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 3,
                   backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
@@ -58,14 +54,12 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
               ),
             ),
           ),
-
           const SizedBox(
             height: 20,
           ),
-
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 30.0),
+            margin: const EdgeInsets.symmetric(horizontal: 30.0),
             child: OutlinedButton(
               onPressed: () {
                 Navigator.push(
@@ -76,15 +70,19 @@ class _AccountDetailsScreenState extends State<AccountDetailsScreen> {
               style: OutlinedButton.styleFrom(
                   elevation: 3,
                   foregroundColor: const Color.fromRGBO(147, 76, 234, 1),
-                  side: BorderSide(color : Color.fromRGBO(147, 76, 234, 1),),
+                  side: const BorderSide(
+                    color: Color.fromRGBO(147, 76, 234, 1),
+                  ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.add_circle_outline_outlined),
-                   SizedBox(width: 20,),
-                   Text(
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
                     "Add Details",
                     style: TextStyle(
                         fontSize: 15,

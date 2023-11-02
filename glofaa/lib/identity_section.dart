@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class IdentitySectionScreen extends StatefulWidget {
-  bool isAadharScreen,
+  final bool isAadharScreen,
       isPanCardScreen,
       isNachScreen,
       isSignedChequeScreen,
@@ -12,7 +12,7 @@ class IdentitySectionScreen extends StatefulWidget {
       isCancelledScreen,
       isPassbookScreen;
 
-  IdentitySectionScreen(
+  const IdentitySectionScreen(
       {super.key,
       this.isAadharScreen = false,
       this.isPanCardScreen = false,
@@ -35,7 +35,7 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
       appBar: AppBar(
         title: Text(
           setText(),
-          style: TextStyle(
+          style: const TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
         ),
       ),
@@ -56,7 +56,7 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
               height: 20,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.topLeft,
               child: const Text(
                 "Type of ID",
@@ -73,7 +73,7 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: TextButton(
                 style: TextButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(230, 210, 255, 1),
+                    backgroundColor: const Color.fromRGBO(230, 210, 255, 1),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     )),
@@ -92,14 +92,14 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
                         width: 220,
                         child: Text(
                           setText(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromRGBO(147, 76, 234, 1),
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Poppins',
                               fontSize: 15),
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.expand_more_rounded,
                         size: 25,
                       ),
@@ -111,7 +111,7 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
             Container(
               height: 30,
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(right: 20.0),
+              padding: const EdgeInsets.only(right: 20.0),
               child: ElevatedButton(
                 onPressed: () {
                   _pickImageFromGallery();
@@ -135,9 +135,9 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
             Container(
               height: 120,
               width: 150,
-              margin: EdgeInsets.only(left: 20.0),
+              margin: const EdgeInsets.only(left: 20.0),
               decoration: BoxDecoration(
-                color: Color.fromRGBO(230, 210, 255, 1),
+                color: const Color.fromRGBO(230, 210, 255, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: /*Column(
@@ -167,7 +167,7 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
                             height: 120,
                           ),
                         )
-                      : Text("no selected"),
+                      : const Text("no selected"),
             ),
             Container(
               alignment: Alignment.topCenter,
@@ -214,21 +214,22 @@ class _IdentitySectionScreenState extends State<IdentitySectionScreen> {
   }
 
   String setText() {
-    if (this.widget.isAadharScreen == true) {
+    if (widget.isAadharScreen == true) {
       return "Aadhar Card";
-    } else if (this.widget.isPanCardScreen == true) {
+    } else if (widget.isPanCardScreen == true) {
       return "Pan Card";
-    } else if (this.widget.isNachScreen == true) {
+    } else if (widget.isNachScreen == true) {
       return "NACH";
-    } else if (this.widget.isSignedChequeScreen == true) {
+    } else if (widget.isSignedChequeScreen == true) {
       return "Signed Cheque";
-    } else if (this.widget.isBankStatementScreen == true) {
+    } else if (widget.isBankStatementScreen == true) {
       return "Bank Statement";
-    } else if (this.widget.isPassbookScreen == true) {
+    } else if (widget.isPassbookScreen == true) {
       return "Passbook";
-    } else if (this.widget.isCancelledScreen == true) {
+    } else if (widget.isCancelledScreen == true) {
       return "Cancelled Cheque";
-    } else
+    } else {
       return "Identity Section";
+    }
   }
 }

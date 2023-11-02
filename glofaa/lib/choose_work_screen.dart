@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class ChooseWorkScreen extends StatefulWidget {
@@ -10,7 +8,7 @@ class ChooseWorkScreen extends StatefulWidget {
 }
 
 class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
-  var itemCount  = 3;
+  var itemCount = 3;
   dynamic g1;
   var searchQuery = TextEditingController();
 
@@ -22,9 +20,9 @@ class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
         padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
-
-            const SizedBox(height: 20,),
-
+            const SizedBox(
+              height: 20,
+            ),
             Container(
               alignment: Alignment.topLeft,
               child: const Text(
@@ -35,25 +33,29 @@ class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
                     fontSize: 20),
               ),
             ),
-
-            const SizedBox(height: 15,),
-
+            const SizedBox(
+              height: 15,
+            ),
             SizedBox(
               height: 40,
               child: TextField(
                 controller: searchQuery,
-                  style: const TextStyle(
-                      color: Color.fromRGBO(147, 76, 234, 1),
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins',
-                      fontSize: 15),
+                style: const TextStyle(
+                    color: Color.fromRGBO(147, 76, 234, 1),
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Poppins',
+                    fontSize: 15),
                 maxLines: 1,
-
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.only(right: 20,),
-                  prefixIcon: const Icon(Icons.search_rounded, size: 25,  color: Color.fromRGBO(147, 76, 234, 1),),
+                  contentPadding: const EdgeInsets.only(
+                    right: 20,
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.search_rounded,
+                    size: 25,
+                    color: Color.fromRGBO(147, 76, 234, 1),
+                  ),
                   hintText: "Search plumber, electrician etc.",
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                         color: Color.fromRGBO(147, 76, 234, 1),
@@ -64,13 +66,12 @@ class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
                         color: Color.fromRGBO(147, 76, 234, 1),
                       ),
                       borderRadius: BorderRadius.circular(10)),
-
                 ),
               ),
             ),
-
-            const SizedBox(height: 20,),
-
+            const SizedBox(
+              height: 20,
+            ),
             Container(
               alignment: Alignment.topLeft,
               child: const Text(
@@ -81,20 +82,23 @@ class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
                     fontSize: 16),
               ),
             ),
-
-            const SizedBox(height: 5,),
-
-
+            const SizedBox(
+              height: 5,
+            ),
             Flexible(
-              flex: (itemCount <= 5) ?0 : 1,
-               child: ListView.builder(itemBuilder: (context, index){
+              flex: (itemCount <= 5) ? 0 : 1,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
                   return RadioListTile(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      title:  Text("Beautician ${index+1}", style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Poppins',
-                          fontSize: 14),),
+                      title: Text(
+                        "Beautician ${index + 1}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Poppins',
+                            fontSize: 14),
+                      ),
                       dense: true,
                       controlAffinity: ListTileControlAffinity.trailing,
                       contentPadding: EdgeInsets.zero,
@@ -105,15 +109,15 @@ class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
                           g1 = value!;
                         });
                       });
-                }, itemCount: itemCount,
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                ),
-             ),
-
-
-            const SizedBox(height: 15,),
-
+                },
+                itemCount: itemCount,
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
             Container(
               alignment: Alignment.topLeft,
               child: const Text(
@@ -124,35 +128,37 @@ class _ChooseWorkScreenState extends State<ChooseWorkScreen> {
                     fontSize: 16),
               ),
             ),
-
-            const SizedBox(height: 5,),
-
-
+            const SizedBox(
+              height: 5,
+            ),
             Expanded(
-              child: ListView.builder(itemBuilder: (context, index){
-                return RadioListTile(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    title:  Text("Beautician ${index+1}", style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins',
-                        fontSize: 14),),
-                    dense: true,
-                    controlAffinity: ListTileControlAffinity.trailing,
-                    contentPadding: EdgeInsets.zero,
-                    value: "$index",
-                    groupValue: g1,
-                    onChanged: (value) {
-                      setState(() {
-                        g1 = value!;
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return RadioListTile(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      title: Text(
+                        "Beautician ${index + 1}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Poppins',
+                            fontSize: 14),
+                      ),
+                      dense: true,
+                      controlAffinity: ListTileControlAffinity.trailing,
+                      contentPadding: EdgeInsets.zero,
+                      value: "$index",
+                      groupValue: g1,
+                      onChanged: (value) {
+                        setState(() {
+                          g1 = value!;
+                        });
                       });
-                    });
-              }, itemCount: 30,
+                },
+                itemCount: 30,
                 padding: EdgeInsets.zero,
               ),
             ),
-
-
           ],
         ),
       ),

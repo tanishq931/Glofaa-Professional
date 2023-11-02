@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:glofaa/bottom_new_page.dart';
 import 'package:glofaa/bottom_profile_progress_screen.dart';
 import 'package:glofaa/bottom_uc_arround_you_screen.dart';
-import 'package:glofaa/live_training_screen.dart';
 
 class CompleteTrainingAndProfileScreen extends StatefulWidget {
   const CompleteTrainingAndProfileScreen({super.key});
@@ -34,7 +33,7 @@ class _CompleteTrainingAndProfileScreenState
           IconButton(
             icon: const Icon(Icons.notifications_none_outlined),
             onPressed: () {
-             /* Navigator.push(context, MaterialPageRoute(builder: (context) => LiveTrainingScreen()));*/
+              /* Navigator.push(context, MaterialPageRoute(builder: (context) => LiveTrainingScreen()));*/
             },
           ),
         ],

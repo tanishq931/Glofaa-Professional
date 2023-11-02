@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:glofaa/identity_verification_screen.dart';
-import 'package:glofaa/account_details_screen.dart';
 import 'package:glofaa/loans_screen.dart';
 
 class OnBoardingDocumentsScreen extends StatefulWidget {
@@ -16,7 +15,7 @@ class _OnBoardingDocumentsScreenState extends State<OnBoardingDocumentsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "On Boarding Documents",
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
@@ -25,18 +24,22 @@ class _OnBoardingDocumentsScreenState extends State<OnBoardingDocumentsScreen> {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisExtent: 100,
             crossAxisSpacing: 5,
           ),
           children: [
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => IdentityVerificationScreen()));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const IdentityVerificationScreen()));
               },
               child: Card(
-                color: Color.fromRGBO(203, 255, 224, 1),
+                color: const Color.fromRGBO(203, 255, 224, 1),
                 child: Column(children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -57,7 +60,7 @@ class _OnBoardingDocumentsScreenState extends State<OnBoardingDocumentsScreen> {
                       ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Verification",
                     style: TextStyle(
                         color: Color.fromRGBO(46, 222, 117, 1),
@@ -69,11 +72,14 @@ class _OnBoardingDocumentsScreenState extends State<OnBoardingDocumentsScreen> {
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LoansScreen()));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoansScreen()));
               },
               child: Card(
-                color: Color.fromRGBO(201, 242, 255, 1),
+                color: const Color.fromRGBO(201, 242, 255, 1),
                 child: Column(children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -94,7 +100,7 @@ class _OnBoardingDocumentsScreenState extends State<OnBoardingDocumentsScreen> {
                       ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Loans",
                     style: TextStyle(
                         color: Color.fromRGBO(72, 202, 243, 1),

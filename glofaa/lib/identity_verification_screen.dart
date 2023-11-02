@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:glofaa/identity_section.dart';
+import 'package:glofaa/issue_screen.dart';
 import 'package:glofaa/personal_details_step_screen.dart';
 import 'package:glofaa/verify_delivery_address_screen.dart';
 
@@ -18,7 +19,7 @@ class _IdentityVerificationScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Identity Verification",
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
@@ -27,7 +28,7 @@ class _IdentityVerificationScreenState
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -37,15 +38,15 @@ class _IdentityVerificationScreenState
                   width: 250,
                   height: 250,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Card(
+            const Card(
               color: Color.fromRGBO(147, 76, 234, 1),
               elevation: 0,
               margin: EdgeInsets.all(20),
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: EdgeInsets.all(12.0),
                 child: Text(
                   "Thanks for the information. Once your profile goes live we will verify your details and current address through our agencies.",
                   style: TextStyle(
@@ -56,7 +57,7 @@ class _IdentityVerificationScreenState
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Stepper(
@@ -67,10 +68,11 @@ class _IdentityVerificationScreenState
                 });
               },
               onStepContinue: () {
-                if (_currentIndex != 3)
+                if (_currentIndex != 3) {
                   setState(() {
                     _currentIndex++;
                   });
+                }
               },
               onStepCancel: () {
                 if (_currentIndex != 0) {
@@ -91,7 +93,7 @@ class _IdentityVerificationScreenState
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Identity Proof",
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -108,14 +110,14 @@ class _IdentityVerificationScreenState
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            IdentitySectionScreen()));
+                                            const IdentitySectionScreen()));
                               },
                             )
                           ],
                         ),
                       ),
                     ),
-                    content: Text("")),
+                    content: const Text("")),
                 Step(
                     isActive: (_currentIndex == 1),
                     title: Card(
@@ -127,7 +129,7 @@ class _IdentityVerificationScreenState
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Personal Details",
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -151,7 +153,7 @@ class _IdentityVerificationScreenState
                         ),
                       ),
                     ),
-                    content: Text("")),
+                    content: const Text("")),
                 Step(
                     isActive: (_currentIndex == 2),
                     title: Card(
@@ -163,7 +165,7 @@ class _IdentityVerificationScreenState
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Current Address",
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -187,7 +189,7 @@ class _IdentityVerificationScreenState
                         ),
                       ),
                     ),
-                    content: Text("")),
+                    content: const Text("")),
                 Step(
                     isActive: (_currentIndex == 3),
                     title: Card(
@@ -199,7 +201,7 @@ class _IdentityVerificationScreenState
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Declaration",
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -223,7 +225,7 @@ class _IdentityVerificationScreenState
                         ),
                       ),
                     ),
-                    content: Text("")),
+                    content: const Text("")),
               ],
             ),
             const SizedBox(
@@ -233,10 +235,10 @@ class _IdentityVerificationScreenState
               width: 180,
               child: ElevatedButton(
                 onPressed: () {
-                  /*Navigator.push(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AccountDetailsScreen()));*/
+                          builder: (context) => const IssueScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     elevation: 5,
