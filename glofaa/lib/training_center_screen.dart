@@ -105,6 +105,8 @@ class _TrainingCenterScreenState extends State<TrainingCenterScreen> {
                 onSelected: (newState) {
                   setState(() {
                     isSelectedChip1 = newState;
+                    isSelectedChip2 = false;
+                    isSelectedChip3 = false;
                   });
                 },
               ),
@@ -132,7 +134,9 @@ class _TrainingCenterScreenState extends State<TrainingCenterScreen> {
                 selectedColor: const Color.fromRGBO(74, 128, 249, 1),
                 onSelected: (newState) {
                   setState(() {
+                    isSelectedChip1 = false;
                     isSelectedChip2 = newState;
+                    isSelectedChip3 = false;
                   });
                 },
               ),
@@ -160,6 +164,8 @@ class _TrainingCenterScreenState extends State<TrainingCenterScreen> {
                 selectedColor: const Color.fromRGBO(242, 20, 20, 1),
                 onSelected: (newState) {
                   setState(() {
+                    isSelectedChip1 = false;
+                    isSelectedChip2 = false;
                     isSelectedChip3 = newState;
                   });
                 },

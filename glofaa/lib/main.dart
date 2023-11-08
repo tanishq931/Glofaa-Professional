@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/issue_screen.dart';
+import 'package:glofaa/services_status_screen.dart';
+import 'package:glofaa/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,7 +71,12 @@ class _MyStartPageState extends State<MyStartPage> {
             child: SizedBox(
               width: 145,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignUpPage()));
+                },
                 style: ElevatedButton.styleFrom(
                     elevation: 5,
                     backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
@@ -96,7 +102,7 @@ class _MyStartPageState extends State<MyStartPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const IssueScreen()));
+                          builder: (context) => const ServicesStatusScreen()));
                 },
                 style: OutlinedButton.styleFrom(
                     elevation: 5,

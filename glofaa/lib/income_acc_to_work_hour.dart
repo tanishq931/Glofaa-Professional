@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'home_screen.dart';
+import 'package:glofaa/complete_training_and_profile_screen.dart';
 
 class IncomeSetupScreen extends StatefulWidget {
   const IncomeSetupScreen({super.key});
@@ -119,9 +118,13 @@ class _IncomeSetupScreenState extends State<IncomeSetupScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Your work every day for 4 hrs..",
-                  style: TextStyle(
+                Text(
+                  (selected == 3)
+                      ? "Your work every day for 8 hrs.."
+                      : (selected == 2)
+                          ? "Your work every day for 6 hrs.."
+                          : "Your work every day for 4 hrs..",
+                  style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Poppins',
                       fontSize: 13),
@@ -160,7 +163,8 @@ class _IncomeSetupScreenState extends State<IncomeSetupScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+                        builder: (context) =>
+                            const CompleteTrainingAndProfileScreen()));
               },
               style: ElevatedButton.styleFrom(
                   elevation: 5,
