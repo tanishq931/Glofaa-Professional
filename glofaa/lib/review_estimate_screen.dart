@@ -826,30 +826,33 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
   }
 
   Future _displayTAndCDialogBox() {
-    return showDialog(
+    return showAdaptiveDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) => Dialog(
-              insetPadding: const EdgeInsets.all(30),
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      "I hereby  agree and accept the following for the current job:",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 16),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
+              insetPadding: const EdgeInsets.all(15),
+              child: Container(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20, top: 20, bottom: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        "I hereby  agree and accept the following for the current job:",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const ListTile(
+                        titleAlignment: ListTileTitleAlignment.top,
+                        contentPadding: EdgeInsets.zero,
+                        leading: Padding(
                           padding: EdgeInsets.only(top: 4.0),
                           child: Icon(
                             Icons.circle_rounded,
@@ -857,140 +860,104 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: 225,
-                          child: Text(
-                            "I will not perform gas charging under any circumstances on a job if i am not approved for Gas charging by glofaa technology.",
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 13),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: 225,
-                          child: Text(
-                            "I will check if AC has  Nitrogen or not before I start working on it.",
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 13),
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: 225,
-                          child: Text(
-                            "I will ensure  that the AC plug is switched off before I start working on it.",
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 13),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: 225,
-                          child: Text(
-                            "If i am not approved for gas charging by glofaa technology and if a customer requires gas charging of his/her air conditioner unit(s), I undertake to inform the customer that i am not approved to carry out gas charging. I further undertake  to inform the customer that they can make a specific request for gas charging on the Glofaa Technology app so that an approved technician may be connected with the customer. ",
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 13),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                          left: 20, right: 20.0, top: 20.0),
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const CapturePhotoScreen()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromRGBO(147, 76, 234, 1),
-                        ),
-                        child: const Text(
-                          "I agree",
+                        title: Text(
+                          "I will not perform gas charging under any circumstances on a job if i am not approved for Gas charging by glofaa technology.",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Color.fromRGBO(0, 0, 0, 0.50),
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Poppins',
-                              fontSize: 14),
+                              fontSize: 13),
                         ),
                       ),
-                    ),
-                  ],
+                      const ListTile(
+                        titleAlignment: ListTileTitleAlignment.top,
+                        contentPadding: EdgeInsets.zero,
+                        leading: Padding(
+                          padding: EdgeInsets.only(top: 4.0),
+                          child: Icon(
+                            Icons.circle_rounded,
+                            size: 11,
+                            color: Colors.black,
+                          ),
+                        ),
+                        title: Text(
+                          "I will check if AC has  Nitrogen or not before I start working on it.",
+                          style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 0.50),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 13),
+                        ),
+                      ),
+                      const ListTile(
+                        titleAlignment: ListTileTitleAlignment.top,
+                        contentPadding: EdgeInsets.zero,
+                        leading: Padding(
+                          padding: EdgeInsets.only(top: 4.0),
+                          child: Icon(
+                            Icons.circle_rounded,
+                            size: 11,
+                            color: Colors.black,
+                          ),
+                        ),
+                        title: Text(
+                          "I will ensure  that the AC plug is switched off before I start working on it.",
+                          style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 0.50),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 13),
+                        ),
+                      ),
+                      const ListTile(
+                        titleAlignment: ListTileTitleAlignment.top,
+                        contentPadding: EdgeInsets.zero,
+                        leading: Padding(
+                          padding: EdgeInsets.only(top: 4.0),
+                          child: Icon(
+                            Icons.circle_rounded,
+                            size: 11,
+                            color: Colors.black,
+                          ),
+                        ),
+                        title: Text(
+                          "If i am not approved for gas charging by glofaa technology and if a customer requires gas charging of his/her air conditioner unit(s), I undertake to inform the customer that i am not approved to carry out gas charging. I further undertake  to inform the customer that they can make a specific request for gas charging on the Glofaa Technology app so that an approved technician may be connected with the customer. ",
+                          style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 0.50),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 13),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                            left: 20, right: 20.0, top: 20.0),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CapturePhotoScreen()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(147, 76, 234, 1),
+                          ),
+                          child: const Text(
+                            "I agree",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins',
+                                fontSize: 14),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ));

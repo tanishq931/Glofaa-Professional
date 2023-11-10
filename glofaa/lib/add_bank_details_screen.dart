@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BankDetailsScreen extends StatefulWidget {
-  const BankDetailsScreen({super.key});
+class AddBankDetailsScreen extends StatefulWidget {
+  const AddBankDetailsScreen({super.key});
 
   @override
-  State<BankDetailsScreen> createState() => _BankDetailsScreenState();
+  State<AddBankDetailsScreen> createState() => _AddBankDetailsScreenState();
 }
 
-class _BankDetailsScreenState extends State<BankDetailsScreen> {
+class _AddBankDetailsScreenState extends State<AddBankDetailsScreen> {
   TextEditingController accountType = TextEditingController(),
       accountNature = TextEditingController(),
       accountNumber = TextEditingController(),

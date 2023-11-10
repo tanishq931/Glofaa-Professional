@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SessionScreen extends StatefulWidget {
   const SessionScreen({super.key});
@@ -69,7 +70,9 @@ class _SessionScreenState extends State<SessionScreen> {
                   SizedBox(
                     height: 30,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _displayLocation$GpsDialogBox();
+                      },
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
@@ -173,5 +176,136 @@ class _SessionScreenState extends State<SessionScreen> {
         ),
       ),
     );
+  }
+
+  Future _checkPermission(Permission permission, BuildContext context) async {
+    var messenger = ScaffoldMessenger.of(context);
+    final status = await permission.request();
+    if (status.isGranted) {
+      messenger.showSnackBar(const SnackBar(
+        content: Text(
+          "Permission Granted",
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontFamily: 'Poppins',
+              fontSize: 13),
+        ),
+      ));
+    } else if (status.isDenied || status.isPermanentlyDenied) {
+      _displayGoToSettingDialogBox();
+    }
+  }
+
+  Future _displayLocation$GpsDialogBox() {
+    return showAdaptiveDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => Dialog(
+              insetPadding: const EdgeInsets.all(15),
+              child: Container(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20, top: 20, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Location & GPS access",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins',
+                          fontSize: 16),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text(
+                      "Please allow Glofaa app to track your current location. this is important for us to be able to send you jobs in your area. ",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          fontSize: 13),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      alignment: Alignment.topRight,
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _checkPermission(Permission.location, context);
+                        },
+                        child: const Text(
+                          "AGREE AND GRANT ACCESS",
+                          style: TextStyle(
+                              color: Color.fromRGBO(147, 76, 234, 1),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 13),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ));
+  }
+
+  Future _displayGoToSettingDialogBox() {
+    return showAdaptiveDialog(
+        context: context,
+        builder: (context) => Dialog(
+              insetPadding: const EdgeInsets.all(15),
+              child: Container(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20, top: 25, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Allow Glofaa technology partner app to fetch location in background. Please select Allow this time option on next screen.",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          fontSize: 14),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      alignment: Alignment.topRight,
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          openAppSettings();
+                        },
+                        child: const Text(
+                          "CONTINUE",
+                          style: TextStyle(
+                              color: Color.fromRGBO(147, 76, 234, 1),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 13),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ));
   }
 }
