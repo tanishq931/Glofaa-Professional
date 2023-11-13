@@ -18,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Container(
             padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
+            margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
             decoration: BoxDecoration(
                 color: const Color.fromRGBO(147, 76, 234, 1),
                 borderRadius: BorderRadius.circular(10)),
@@ -103,7 +103,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: Color.fromRGBO(147, 76, 234, 1),
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const CompleteTrainingAndProfileScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CompleteTrainingAndProfileScreen()));
                         },
                       )
                     ],
@@ -532,8 +536,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Terms of use",
                   style: TextStyle(
@@ -542,9 +547,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
-
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Privacy policy",
                   style: TextStyle(
@@ -553,9 +558,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
-
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Welfare policy",
                   style: TextStyle(
@@ -564,9 +569,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
-
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Rate us on the play store",
                   style: TextStyle(
@@ -575,9 +580,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
-
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Rate us on the play store",
                   style: TextStyle(
@@ -586,9 +591,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
-
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Download UC Customer App",
                   style: TextStyle(
@@ -597,9 +602,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 14),
                 ),
-
-                SizedBox(height: 15,),
-
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   "Logout",
                   style: TextStyle(
@@ -608,9 +613,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontFamily: 'Poppins',
                       fontSize: 20),
                 ),
-
-                SizedBox(height: 20,),
-
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
                   "v6.9.45 192",
                   style: TextStyle(

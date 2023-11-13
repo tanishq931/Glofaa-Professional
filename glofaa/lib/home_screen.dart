@@ -21,6 +21,24 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.translate_rounded),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.notifications_none_outlined),
+            onPressed: () {
+              /* Navigator.push(context, MaterialPageRoute(builder: (context) => LiveTrainingScreen()));*/
+            },
+          ),
+        ],
+        leading: IconButton(
+          icon: const Icon(Icons.pending_outlined),
+          onPressed: () {},
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
           onTap: (selectedIndex) {
@@ -34,10 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const IconThemeData(color: Color.fromRGBO(147, 76, 234, 1)),
           items: [
             const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.pending_outlined,
-                ),
-                label: "Progress"),
+                icon: Icon(Icons.pending_outlined), label: "Progress"),
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(top: 1.5, bottom: 3.0),
@@ -59,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ? const Color.fromRGBO(147, 76, 234, 1)
                           : Colors.grey.shade600),
                 ),
-                label: "Cult"),
+                label: "Cult")
           ]),
       body: pages[currentIndex],
     );
