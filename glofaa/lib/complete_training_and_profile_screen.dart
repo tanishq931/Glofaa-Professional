@@ -49,7 +49,7 @@ class _CompleteTrainingAndProfileScreenState
           BottomNavigationBarItem(
               icon: Icon(Icons.add_circle_outline_outlined), label: "New"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin), label: "Profile Progress"),
+              icon: Icon(Icons.account_circle), label: "Profile Progress"),
           BottomNavigationBarItem(
               icon: Icon(Icons.fact_check_outlined), label: "UC Around You"),
         ],

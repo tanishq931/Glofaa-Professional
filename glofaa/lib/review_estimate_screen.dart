@@ -863,8 +863,8 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                         title: Text(
                           "I will not perform gas charging under any circumstances on a job if i am not approved for Gas charging by glofaa technology.",
                           style: TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 0.50),
-                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
                               fontFamily: 'Poppins',
                               fontSize: 13),
                         ),
@@ -883,8 +883,8 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                         title: Text(
                           "I will check if AC has  Nitrogen or not before I start working on it.",
                           style: TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 0.50),
-                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
                               fontFamily: 'Poppins',
                               fontSize: 13),
                         ),
@@ -903,8 +903,8 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                         title: Text(
                           "I will ensure  that the AC plug is switched off before I start working on it.",
                           style: TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 0.50),
-                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
                               fontFamily: 'Poppins',
                               fontSize: 13),
                         ),
@@ -923,8 +923,8 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                         title: Text(
                           "If i am not approved for gas charging by glofaa technology and if a customer requires gas charging of his/her air conditioner unit(s), I undertake to inform the customer that i am not approved to carry out gas charging. I further undertake  to inform the customer that they can make a specific request for gas charging on the Glofaa Technology app so that an approved technician may be connected with the customer. ",
                           style: TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 0.50),
-                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
                               fontFamily: 'Poppins',
                               fontSize: 13),
                         ),

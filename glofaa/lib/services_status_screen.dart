@@ -5,6 +5,8 @@ import 'package:glofaa/bottom_new_service_screen.dart';
 import 'package:glofaa/bottom_ongoing_service_screen.dart';
 import 'package:glofaa/bottom_target_service_screen.dart';
 
+import 'menu_screen.dart';
+
 class ServicesStatusScreen extends StatefulWidget {
   const ServicesStatusScreen({super.key});
 
@@ -33,10 +35,15 @@ class _ServicesStatusScreenState extends State<ServicesStatusScreen> {
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.notifications_none_outlined),
+            icon: const Icon(Icons.person_outlined),
             onPressed: () {
-              /* Navigator.push(context, MaterialPageRoute(builder: (context) => LiveTrainingScreen()));*/
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MenuScreen()));
             },
+          ),
+          IconButton(
+            icon: const Icon(Icons.notifications_none_outlined),
+            onPressed: () {},
           ),
         ],
         leading: IconButton(
