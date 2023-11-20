@@ -36,7 +36,7 @@ class _FillACDetails3ServicesScreenState
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Container(
@@ -46,7 +46,7 @@ class _FillACDetails3ServicesScreenState
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(228, 228, 250, 0.81),
                   borderRadius: BorderRadius.circular(10)),
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: const Text(
                 'Add all details even if no service/repair work is done.',
                 textAlign: TextAlign.center,
@@ -57,48 +57,101 @@ class _FillACDetails3ServicesScreenState
                     fontSize: 14),
               ),
             ),
-            Expanded(
-              child: ListView.separated(
-                itemCount: 5,
-                itemBuilder: (context, index) => Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color(0x3F000000),
-                          blurRadius: 4,
-                        ),
-                      ]),
-                  child: ListTile(
-                    title: Text(
-                      Probelms[index],
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 15),
-                    ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        customRadioButton(index, "No", 0),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        customRadioButton(index, "Yes", 1),
-                      ],
-                    ),
+            Column(
+                children: List.generate(
+              5,
+              (index) => Container(
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 2,
+                      ),
+                    ]),
+                child: ListTile(
+                  title: Text(
+                    Probelms[index],
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                        fontSize: 15),
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      customRadioButton(index, "No", 0),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      customRadioButton(index, "Yes", 1),
+                    ],
                   ),
                 ),
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    height: 20,
-                  );
-                },
+              ),
+            )),
+            Container(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x3F000000),
+                      blurRadius: 2,
+                    ),
+                  ]),
+              child: Column(
+                children: [
+                  ListTile(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text(
+                      'Cannot check/repair appliance',
+                      style: TextStyle(
+                          color: Colors.redAccent,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins',
+                          fontSize: 14),
+                    ),
+                    subtitle: const Padding(
+                      padding: EdgeInsets.only(top: 5.0),
+                      child: Text(
+                        'Select if no work can be done on this',
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Poppins',
+                            fontSize: 13),
+                      ),
+                    ),
+                    trailing: Container(
+                      width: 25,
+                      height: 25,
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x3F000000),
+                              blurRadius: 2,
+                            ),
+                          ]),
+                      child: const Icon(
+                        Icons.keyboard_arrow_right,
+                        size: 20,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 20, right: 20.0, bottom: 20),
+              margin: const EdgeInsets.only(
+                  left: 20, right: 20.0, top: 20, bottom: 20),
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
@@ -106,7 +159,7 @@ class _FillACDetails3ServicesScreenState
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              const ServiceCostEstimateScreeen()));
+                              const ServiceCostEstimateScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(147, 76, 234, 1),

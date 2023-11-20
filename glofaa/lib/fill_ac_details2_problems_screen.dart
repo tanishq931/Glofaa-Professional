@@ -36,7 +36,7 @@ class _FillACDetails2ProblemsScreenState
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Container(
@@ -46,7 +46,7 @@ class _FillACDetails2ProblemsScreenState
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(228, 228, 250, 0.81),
                   borderRadius: BorderRadius.circular(10)),
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: const Text(
                 'Add all details even if no service/repair work is done.',
                 textAlign: TextAlign.center,
@@ -57,48 +57,43 @@ class _FillACDetails2ProblemsScreenState
                     fontSize: 14),
               ),
             ),
-            Expanded(
-              child: ListView.separated(
-                itemCount: 5,
-                itemBuilder: (context, index) => Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color(0x3F000000),
-                          blurRadius: 4,
-                        ),
-                      ]),
-                  child: ListTile(
-                    title: Text(
-                      probelms[index],
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 15),
-                    ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        customRadioButton(index, "No", 0),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        customRadioButton(index, "Yes", 1),
-                      ],
-                    ),
-                  ),
-                ),
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    height: 20,
-                  );
-                },
-              ),
-            ),
+            Column(
+                children: List.generate(
+                    5,
+                    (index) => Container(
+                          margin: const EdgeInsets.only(bottom: 20),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color(0x3F000000),
+                                  blurRadius: 2,
+                                ),
+                              ]),
+                          child: ListTile(
+                            title: Text(
+                              probelms[index],
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15),
+                            ),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                customRadioButton(index, "No", 0),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                customRadioButton(index, "Yes", 1),
+                              ],
+                            ),
+                          ),
+                        ))),
             Container(
-              margin: const EdgeInsets.only(left: 20, right: 20.0, bottom: 20),
+              margin: const EdgeInsets.only(
+                  left: 20, right: 20.0, top: 20, bottom: 20),
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {

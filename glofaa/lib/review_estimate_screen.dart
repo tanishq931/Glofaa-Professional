@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:glofaa/capture_Photo_screen.dart';
+import 'package:glofaa/payment_method_screen.dart';
 import 'package:glofaa/service_cost_estimate_screen.dart';
 
 class ReviewEstimateScreen extends StatefulWidget {
@@ -11,10 +12,8 @@ class ReviewEstimateScreen extends StatefulWidget {
 }
 
 class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
-  var otp1 = TextEditingController();
-  var otp2 = TextEditingController();
-  var otp3 = TextEditingController();
-  var otp4 = TextEditingController();
+  late bool isLoading;
+  late bool showIsCustomerNotPresentBtn;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
         title: const Text(
           'Estimate',
           style: TextStyle(
-              fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
+              fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 18),
         ),
         actions: const [
           Padding(
@@ -41,7 +40,7 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
             Container(
               alignment: Alignment.topLeft,
               padding: const EdgeInsets.only(
-                left: 25.0,
+                left: 20.0,
                 top: 10,
               ),
               child: const Text(
@@ -54,14 +53,14 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(20),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
                       color: Color(0x3F000000),
-                      blurRadius: 4,
+                      blurRadius: 2,
                     ),
                   ]),
               child: const Column(
@@ -186,9 +185,7 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
             ),
             Container(
               alignment: Alignment.topLeft,
-              padding: const EdgeInsets.only(
-                left: 25.0,
-              ),
+              padding: const EdgeInsets.only(left: 20.0, top: 5, bottom: 5),
               child: const Text(
                 'OTHERS',
                 style: TextStyle(
@@ -199,14 +196,14 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(20),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
                       color: Color(0x3F000000),
-                      blurRadius: 4,
+                      blurRadius: 2,
                     ),
                   ]),
               child: const Padding(
@@ -240,15 +237,18 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
                       color: Color(0x3F000000),
-                      blurRadius: 4,
+                      blurRadius: 2,
                     ),
                   ]),
               child: const Column(
@@ -369,7 +369,7 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  _displayBottomSheet();
+                  _displayEstimateIsCorrectOrNotBottomSheet();
                   /*Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -394,191 +394,58 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
     );
   }
 
-  Future _displayBottomSheet() {
+  Future _displayEstimateIsCorrectOrNotBottomSheet() {
     return showModalBottomSheet(
         context: context,
         builder: (context) => Container(
               padding: const EdgeInsets.all(20),
               width: double.infinity,
               height: 300,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Icon(
-                    Icons.help_outlined,
-                    color: Color.fromRGBO(147, 76, 234, 1),
-                    size: 75,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  RichText(
-                      text: const TextSpan(children: [
-                    TextSpan(
-                      text: "Is ",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 18),
-                    ),
-                    TextSpan(
-                      text: "₹847",
-                      style: TextStyle(
-                          color: Color.fromRGBO(147, 76, 234, 1),
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 18),
-                    ),
-                    TextSpan(
-                      text: " estimate correct?",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 18),
-                    ),
-                  ])),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Text(
-                    "Costing difference (less or more) may impact customer experience",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color.fromRGBO(0, 0, 0, 0.50),
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
-                        fontSize: 14),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: 150,
-                        child: OutlinedButton.icon(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ServiceCostEstimateScreeen()));
-                          },
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor:
-                                const Color.fromRGBO(147, 76, 234, 1),
-                            side: const BorderSide(
-                              color: Color.fromRGBO(147, 76, 234, 1),
-                            ),
-                          ),
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            size: 16,
-                          ),
-                          label: const Text(
-                            "Change",
-                            style: TextStyle(
-                                color: Color.fromRGBO(147, 76, 234, 1),
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 14),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 150,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            _displayOTPDialogBox();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(147, 76, 234, 1),
-                          ),
-                          label: const Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 16,
-                          ),
-                          icon: const Text(
-                            "Yes",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 14),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ));
-  }
-
-  Future _displayOTPDialogBox() {
-    return showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => Dialog(
-              child: Container(
-                padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      height: 35,
-                      alignment: Alignment.topRight,
-                      child: OutlinedButton.icon(
-                        onPressed: () {
-                          /*Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ServiceCostEstimateScreeen()));*/
-                        },
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor:
-                              const Color.fromRGBO(147, 76, 234, 1),
-                          side: const BorderSide(
-                            color: Color.fromRGBO(147, 76, 234, 1),
-                          ),
-                        ),
-                        icon: const Icon(
-                          Icons.help_outline,
-                          size: 20,
-                        ),
-                        label: const Text(
-                          "Help",
-                          style: TextStyle(
-                              color: Color.fromRGBO(147, 76, 234, 1),
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Poppins',
-                              fontSize: 14),
-                        ),
+                    const Icon(
+                      Icons.help_outlined,
+                      color: Color.fromRGBO(147, 76, 234, 1),
+                      size: 75,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    RichText(
+                        text: const TextSpan(children: [
+                      TextSpan(
+                        text: "Is ",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            fontSize: 18),
                       ),
-                    ),
+                      TextSpan(
+                        text: "₹847",
+                        style: TextStyle(
+                            color: Color.fromRGBO(147, 76, 234, 1),
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            fontSize: 18),
+                      ),
+                      TextSpan(
+                        text: " estimate correct?",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            fontSize: 18),
+                      ),
+                    ])),
                     const SizedBox(
                       height: 20,
                     ),
                     const Text(
-                      "Enter job code",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 18),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text(
-                      "Ask customer for this code",
+                      "Costing difference (less or more) may impact customer experience",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Color.fromRGBO(0, 0, 0, 0.50),
                           fontWeight: FontWeight.w600,
@@ -589,377 +456,174 @@ class _ReviewEstimateScreenState extends State<ReviewEstimateScreen> {
                       height: 20,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color(0xffd9d9d9)),
-                          child: TextField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            maxLength: 1,
-                            onChanged: (value) {
-                              if (value.length == 1) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.phone,
-                            controller: otp1,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(147, 76, 234, 1),
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              //isCollapsed: true,
-                              counterText: "",
-                              contentPadding:
-                                  const EdgeInsets.only(left: 15.0, top: 17.0),
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0xffd9d9d9),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color.fromRGBO(147, 76, 234, 1)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color(0xffd9d9d9)),
-                          child: TextField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            maxLength: 1,
-                            onChanged: (value) {
-                              if (value.length == 1) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                            textInputAction: TextInputAction.next,
-                            textAlignVertical: TextAlignVertical.center,
-                            keyboardType: TextInputType.phone,
-                            controller: otp2,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(147, 76, 234, 1),
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              //isCollapsed: true,
-                              counterText: "",
-                              contentPadding:
-                                  const EdgeInsets.only(left: 15.0, top: 17.0),
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0xffd9d9d9),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color.fromRGBO(147, 76, 234, 1)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color(0xffd9d9d9)),
-                          child: TextField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            maxLength: 1,
-                            onChanged: (value) {
-                              if (value.length == 1) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                            textInputAction: TextInputAction.next,
-                            textAlignVertical: TextAlignVertical.center,
-                            keyboardType: TextInputType.phone,
-                            controller: otp3,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(147, 76, 234, 1),
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              //isCollapsed: true,
-                              counterText: "",
-                              contentPadding:
-                                  const EdgeInsets.only(left: 15.0, top: 17.0),
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0xffd9d9d9),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color.fromRGBO(147, 76, 234, 1)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color(0xffd9d9d9)),
-                          child: TextField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            maxLength: 1,
-                            onChanged: (value) {
-                              if (value.length == 1) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                            textInputAction: TextInputAction.next,
-                            textAlignVertical: TextAlignVertical.center,
-                            keyboardType: TextInputType.phone,
-                            controller: otp4,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(147, 76, 234, 1),
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                                fontSize: 17),
-                            decoration: InputDecoration(
-                              //isCollapsed: true,
-                              counterText: "",
-                              contentPadding:
-                                  const EdgeInsets.only(left: 15.0, top: 17.0),
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0xffd9d9d9),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color.fromRGBO(147, 76, 234, 1)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.access_time),
                         SizedBox(
-                          width: 10,
+                          width: 150,
+                          child: OutlinedButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ServiceCostEstimateScreen()));
+                            },
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor:
+                                  const Color.fromRGBO(147, 76, 234, 1),
+                              side: const BorderSide(
+                                color: Color.fromRGBO(147, 76, 234, 1),
+                              ),
+                            ),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              size: 16,
+                            ),
+                            label: const Text(
+                              "Change",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(147, 76, 234, 1),
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14),
+                            ),
+                          ),
                         ),
-                        Text(
-                          'Resend OTP in 00:28',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Poppins',
-                              fontSize: 15),
+                        SizedBox(
+                          width: 150,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              isLoading = true;
+                              showIsCustomerNotPresentBtn = false;
+                              _displayConfirmationBottomSheet();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(147, 76, 234, 1),
+                            ),
+                            label: const Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            icon: const Text(
+                              "Yes",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14),
+                            ),
+                          ),
                         ),
                       ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 20,
-                        right: 20.0,
-                      ),
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          _displayTAndCDialogBox();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromRGBO(147, 76, 234, 1),
-                        ),
-                        child: const Text(
-                          "Verify OTP",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Poppins',
-                              fontSize: 14),
-                        ),
-                      ),
-                    ),
+                    )
                   ],
                 ),
               ),
             ));
   }
 
-  Future _displayTAndCDialogBox() {
-    return showAdaptiveDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => Dialog(
-              insetPadding: const EdgeInsets.all(15),
-              child: Container(
-                padding: const EdgeInsets.only(
-                    left: 20.0, right: 20, top: 20, bottom: 20),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        "I hereby  agree and accept the following for the current job:",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Poppins',
-                            fontSize: 16),
+  Future _displayConfirmationBottomSheet() {
+    return showModalBottomSheet(
+      isDismissible: false,
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (BuildContext context, StateSetter setSheetState) {
+          Timer(const Duration(seconds: 3), () {
+            setSheetState(() {
+              isLoading = false;
+            });
+            //startTimer(setSheetState);
+          });
+          Timer(const Duration(seconds: 1), () {
+            setSheetState(() {
+              showIsCustomerNotPresentBtn = true;
+            });
+            //startTimer(setSheetState);
+          });
+
+          return Container(
+            padding: const EdgeInsets.all(20),
+            width: double.infinity,
+            height: 250,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                (isLoading)
+                    ? const Center(
+                        child: CircularProgressIndicator(color: Colors.blue))
+                    : const Icon(
+                        Icons.check_circle,
+                        size: 60,
+                        color: Colors.green,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const ListTile(
-                        titleAlignment: ListTileTitleAlignment.top,
-                        contentPadding: EdgeInsets.zero,
-                        leading: Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        title: Text(
-                          "I will not perform gas charging under any circumstances on a job if i am not approved for Gas charging by glofaa technology.",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Poppins',
-                              fontSize: 13),
-                        ),
-                      ),
-                      const ListTile(
-                        titleAlignment: ListTileTitleAlignment.top,
-                        contentPadding: EdgeInsets.zero,
-                        leading: Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        title: Text(
-                          "I will check if AC has  Nitrogen or not before I start working on it.",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Poppins',
-                              fontSize: 13),
-                        ),
-                      ),
-                      const ListTile(
-                        titleAlignment: ListTileTitleAlignment.top,
-                        contentPadding: EdgeInsets.zero,
-                        leading: Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        title: Text(
-                          "I will ensure  that the AC plug is switched off before I start working on it.",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Poppins',
-                              fontSize: 13),
-                        ),
-                      ),
-                      const ListTile(
-                        titleAlignment: ListTileTitleAlignment.top,
-                        contentPadding: EdgeInsets.zero,
-                        leading: Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
-                            color: Colors.black,
-                          ),
-                        ),
-                        title: Text(
-                          "If i am not approved for gas charging by glofaa technology and if a customer requires gas charging of his/her air conditioner unit(s), I undertake to inform the customer that i am not approved to carry out gas charging. I further undertake  to inform the customer that they can make a specific request for gas charging on the Glofaa Technology app so that an approved technician may be connected with the customer. ",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Poppins',
-                              fontSize: 13),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                            left: 20, right: 20.0, top: 20.0),
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const CapturePhotoScreen()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(147, 76, 234, 1),
-                          ),
-                          child: const Text(
-                            "I agree",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
-                                fontSize: 14),
-                          ),
-                        ),
-                      ),
-                    ],
+                Text(
+                  (isLoading) ? "Waiting for confirmation" : "Job Completed",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: (!isLoading)
+                        ? Colors.green
+                        : const Color.fromRGBO(0, 0, 0, 1),
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins',
+                    fontSize: isLoading ? 14 : 18,
                   ),
                 ),
-              ),
-            ));
+                (isLoading)
+                    ? const Text(
+                        'We will wait for customer’s confirmation upto 2 minutes',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Poppins',
+                            fontSize: 14),
+                      )
+                    : const SizedBox(),
+                (isLoading)
+                    ? (showIsCustomerNotPresentBtn)
+                        ? ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                            ),
+                            child: const Text(
+                              "Customer not at home?",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15),
+                            ),
+                          )
+                        : const SizedBox()
+                    : ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const PaymentMethodScreen()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                        ),
+                        child: const Text(
+                          "Continue",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 15),
+                        ),
+                      ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }

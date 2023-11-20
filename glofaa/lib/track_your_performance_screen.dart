@@ -205,7 +205,7 @@ class _TrackYourPerformanceScreenState
               height: 5,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                     width: 160,
@@ -300,7 +300,7 @@ class _TrackYourPerformanceScreenState
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                     width: 160,
@@ -391,48 +391,60 @@ class _TrackYourPerformanceScreenState
                     )),
               ],
             ),
-            Container(
-                width: 160,
-                height: 100,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                margin: const EdgeInsets.only(left: 10, right: 5, top: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 2,
-                      ),
-                    ]),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      alignment: Alignment.topRight,
-                      child: const Icon(
-                        Icons.cancel,
-                        color: Colors.redAccent,
-                      ),
-                    ),
-                    const Text('0',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          fontSize: 17,
-                        )),
-                    const Text('Cancellations',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Poppins',
-                          fontSize: 12,
-                        )),
-                  ],
-                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                    width: 160,
+                    height: 100,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 15),
+                    margin: const EdgeInsets.only(left: 10, right: 5, top: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 2,
+                          ),
+                        ]),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          alignment: Alignment.topRight,
+                          child: const Icon(
+                            Icons.cancel,
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                        const Text('0',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              fontSize: 17,
+                            )),
+                        const Text('Cancellations',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Poppins',
+                              fontSize: 12,
+                            )),
+                      ],
+                    )),
+                Container(
+                  width: 160,
+                  height: 100,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  margin: const EdgeInsets.only(left: 10, right: 5, top: 10),
+                )
+              ],
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
               child: Text('Job packs',

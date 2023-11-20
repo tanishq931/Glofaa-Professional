@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:glofaa/delivery_summary_screen.dart';
 import 'package:glofaa/identity_section.dart';
-import 'package:glofaa/issue_screen.dart';
 import 'package:glofaa/personal_details_step_screen.dart';
 import 'package:glofaa/verify_delivery_address_screen.dart';
 
@@ -238,7 +238,7 @@ class _IdentityVerificationScreenState
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const IssueScreen()));
+                          builder: (context) => const DeliverySummaryScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     elevation: 5,
