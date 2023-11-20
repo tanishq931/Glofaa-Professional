@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/services_status_screen.dart';
+import 'package:glofaa/delivery_summary_screen.dart';
 
 class CautionScreen extends StatefulWidget {
   const CautionScreen({super.key});
@@ -14,7 +14,7 @@ class _CautionScreenState extends State<CautionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cautions',
+          'Caution',
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
         ),
@@ -33,7 +33,7 @@ class _CautionScreenState extends State<CautionScreen> {
                 boxShadow: const [
                   BoxShadow(
                     color: Color(0x3F000000),
-                    blurRadius: 4,
+                    blurRadius: 2,
                   ),
                 ]),
             child: const Column(
@@ -95,18 +95,18 @@ class _CautionScreenState extends State<CautionScreen> {
           ),
           const Expanded(child: SizedBox()),
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20.0, bottom: 50),
+            margin: const EdgeInsets.only(left: 40, right: 40.0, bottom: 50),
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ServicesStatusScreen()));
+                        builder: (context) => const DeliverySummaryScreen(
+                              showInstructionSheet2: true,
+                            )));
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
-              ),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
               child: const Text(
                 "Start Job",
                 style: TextStyle(

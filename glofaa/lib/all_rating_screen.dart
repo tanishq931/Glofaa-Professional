@@ -434,9 +434,9 @@ class _AllRatingScreenState extends State<AllRatingScreen> {
           const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(
               "All rating (20)",
               style: TextStyle(
                   color: Colors.black,

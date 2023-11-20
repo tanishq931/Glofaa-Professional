@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:glofaa/delivery_summary_screen.dart';
 import 'package:glofaa/services_status_screen.dart';
-import 'package:glofaa/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -75,7 +75,7 @@ class _MyStartPageState extends State<MyStartPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignUpPage()));
+                          builder: (context) => const DeliverySummaryScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     elevation: 5,

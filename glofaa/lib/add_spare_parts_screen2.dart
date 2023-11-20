@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/fill_ac_details_screen.dart';
+import 'package:glofaa/service_cost_estimate_screen.dart';
 
-class AddAcScreen extends StatefulWidget {
-  const AddAcScreen({super.key});
+class AddSparePartsScreen2 extends StatefulWidget {
+  const AddSparePartsScreen2({super.key});
 
   @override
-  State<AddAcScreen> createState() => _AddAcScreenState();
+  State<AddSparePartsScreen2> createState() => _AddSparePartsScreen2State();
 }
 
-enum ACType { option1, option2 }
+enum LessCoolingReason { option1, option2 }
 
-class _AddAcScreenState extends State<AddAcScreen> {
-  ACType? _acType;
-
+class _AddSparePartsScreen2State extends State<AddSparePartsScreen2> {
+  LessCoolingReason? lessCoolingReason;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Add AC',
+          'Add Spare Parts',
           style: TextStyle(
               fontWeight: FontWeight.w600, fontFamily: 'Poppins', fontSize: 20),
         ),
@@ -29,7 +28,7 @@ class _AddAcScreenState extends State<AddAcScreen> {
             alignment: Alignment.topLeft,
             margin: const EdgeInsets.only(left: 20, top: 10),
             child: const Text(
-              'TYPE',
+              'LESS COOLING',
               style: TextStyle(
                   color: Colors.black54,
                   fontWeight: FontWeight.w600,
@@ -49,7 +48,7 @@ class _AddAcScreenState extends State<AddAcScreen> {
                 boxShadow: const [
                   BoxShadow(
                     color: Color(0x3F000000),
-                    blurRadius: 2,
+                    blurRadius: 4,
                   ),
                 ]),
             child: Column(
@@ -63,9 +62,9 @@ class _AddAcScreenState extends State<AddAcScreen> {
                       title: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          "Window AC",
+                          "Low GAS",
                           style: TextStyle(
-                              color: Colors.blue,
+                              color: Color.fromRGBO(147, 76, 234, 1),
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Poppins',
                               fontSize: 13),
@@ -73,11 +72,11 @@ class _AddAcScreenState extends State<AddAcScreen> {
                       ),
                       dense: true,
                       contentPadding: EdgeInsets.zero,
-                      value: ACType.option1,
-                      groupValue: _acType,
+                      value: LessCoolingReason.option1,
+                      groupValue: lessCoolingReason,
                       onChanged: (value) {
                         setState(() {
-                          _acType = value;
+                          lessCoolingReason = value;
                         });
                       }),
                 ),
@@ -93,9 +92,9 @@ class _AddAcScreenState extends State<AddAcScreen> {
                       title: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          "Split AC",
+                          "Electrical Component Issue",
                           style: TextStyle(
-                              color: Colors.blue,
+                              color: Color.fromRGBO(147, 76, 234, 1),
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Poppins',
                               fontSize: 13),
@@ -103,11 +102,11 @@ class _AddAcScreenState extends State<AddAcScreen> {
                       ),
                       dense: true,
                       contentPadding: EdgeInsets.zero,
-                      value: ACType.option2,
-                      groupValue: _acType,
+                      value: LessCoolingReason.option2,
+                      groupValue: lessCoolingReason,
                       onChanged: (value) {
                         setState(() {
-                          _acType = value;
+                          lessCoolingReason = value;
                         });
                       }),
                 ),
@@ -116,14 +115,15 @@ class _AddAcScreenState extends State<AddAcScreen> {
           ),
           const Expanded(child: SizedBox()),
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20.0, bottom: 50),
+            margin: const EdgeInsets.only(left: 50, right: 50.0, bottom: 50),
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const FillACDetailsScreen()));
+                        builder: (context) =>
+                            const ServiceCostEstimateScreen()));
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
               child: const Text(

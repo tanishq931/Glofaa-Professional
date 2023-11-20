@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:glofaa/payment_method_screen.dart';
+import 'package:glofaa/add_proof_screen.dart';
+import 'package:glofaa/review_estimate_screen.dart';
 
 class NewJobStatusScreen extends StatefulWidget {
-  const NewJobStatusScreen({super.key});
+  final bool isProofAdded;
+
+  const NewJobStatusScreen({super.key, this.isProofAdded = false});
 
   @override
   State<NewJobStatusScreen> createState() => _NewJobStatusScreenState();
@@ -41,14 +44,14 @@ class _NewJobStatusScreenState extends State<NewJobStatusScreen> {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.all(20),
+            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
                 boxShadow: const [
                   BoxShadow(
                     color: Color(0x3F000000),
-                    blurRadius: 4,
+                    blurRadius: 2,
                   ),
                 ]),
             child: Column(
@@ -148,10 +151,12 @@ class _NewJobStatusScreenState extends State<NewJobStatusScreen> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PaymentMethodScreen()));
+                (widget.isProofAdded == true)
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReviewEstimateScreen()))
+                    : _displayAddProofBottomSheet();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
@@ -220,5 +225,77 @@ class _NewJobStatusScreenState extends State<NewJobStatusScreen> {
             ],
           )),
     );
+  }
+
+  Future _displayAddProofBottomSheet() {
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) => Container(
+              padding: const EdgeInsets.all(20),
+              width: double.infinity,
+              height: 300,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Icon(
+                    Icons.new_releases,
+                    color: Colors.blue,
+                    size: 65,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Glofaa Quality Check",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                        fontSize: 20),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Complete photo check before proceeding",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 0.67),
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                        fontSize: 14),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 200,
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddProofScreen()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                      icon: const Icon(
+                        Icons.photo_camera_outlined,
+                        color: Colors.white,
+                      ),
+                      label: const Text(
+                        "Add Proof",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            fontSize: 13),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ));
   }
 }

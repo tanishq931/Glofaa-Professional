@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:glofaa/complete_training_and_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -103,11 +102,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: Color.fromRGBO(147, 76, 234, 1),
                         ),
                         onPressed: () {
-                          Navigator.push(
+                          /*Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const CompleteTrainingAndProfileScreen()));
+                                      const CompleteTrainingAndProfileScreen()));*/
                         },
                       )
                     ],
