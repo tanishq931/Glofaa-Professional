@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:glofaa/otp_screen.dart';
+import 'package:glofaa/utils/resource/color_resource.dart';
+import 'package:glofaa/utils/resource/dimensions_resource.dart';
+import 'package:glofaa/utils/resource/style_resource.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -18,7 +21,8 @@ class _SignUpPageState extends State<SignUpPage> {
     "assets/images/img2.png",
     "assets/images/img3.png"
   ];
-  List texts = ["Govt Certified Training", "Earn Double", "Free Insurance"];
+  List texts = ["Govt certified training", "Earn Double", "Free Insurance"];
+  List texts2 = ["Get certified by skill India", "And fulfill your dreams", "For you and your family"];
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +32,14 @@ class _SignUpPageState extends State<SignUpPage> {
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 0,
-              child: Container(
-                height: 380,
-                margin: const EdgeInsets.only(top: 20),
-                padding: const EdgeInsets.only(
-                  top: 40,
-                ),
+        body: ListView(
+          children: [ Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 0,
+                child: Container(
+                height: 515,
                 child: PageView.builder(
                   onPageChanged: (i) {
                     setState(() {
@@ -49,107 +50,130 @@ class _SignUpPageState extends State<SignUpPage> {
                   itemBuilder: (_, i) {
                     return Column(
                       children: [
-                        SizedBox(
-                            height: 270, child: Image.asset(imagesLink[i])),
-                        const SizedBox(
-                          height: 20,
+                        Stack(
+                          children: [
+                            SizedBox(
+                              height:500,width: 500, child: Image.asset(imagesLink[i],fit: BoxFit.cover,)),
+                            Positioned(
+                              bottom:110,
+                              left:48,
+                              child: Text(
+                                texts[i],
+                                style: const TextStyle(
+                                    fontSize: 28,
+                                    color: Colors.white,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w800),
+                              ),
+                            ),
+                            Positioned(
+                              bottom:75,
+                              left:80,
+                              right:80,
+                              child: Text(
+                                texts2[i],
+                                style: const TextStyle(
+                                    fontSize: 19,
+                                    color: Colors.white,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                            Positioned(
+                                bottom:45,
+                                right: 110,
+                                left: 110,
+                                child: dotIndicator()),
+                    ],
                         ),
-                        Text(
-                          texts[i],
-                          style: const TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600),
-                        ),
+
                       ],
                     );
                   },
                 ),
-              ),
-            ),
-            dotIndicator(),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(
-                left: 30.0,
-                right: 30.0,
-              ),
-              child: Text(
-                "Wearing masks can sometimes make communication more difficult, especially for people who have trouble speaking or hearing. Here are some ways in which wearing masks can be challenging:",
-                style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              padding: const EdgeInsets.only(
-                left: 30,
-                right: 30,
-                bottom: 40,
-              ),
-              // height: 40,
-              child: TextField(
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                ],
-                textAlignVertical: TextAlignVertical.center,
-                keyboardType: TextInputType.phone,
-                controller: mobileNo,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w200,
-                    fontFamily: 'Poppins',
-                    fontSize: 15),
-                decoration: const InputDecoration(
-                  isCollapsed: true,
-                  prefixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "+91",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontFamily: 'Poppins',
-                            fontSize: 15),
-                      ),
-                    ],
-                  ),
-                  hintText: "Enter Mobile No",
-                  border: OutlineInputBorder(),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 180,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const OtpScreen()));
-                },
-                style: ElevatedButton.styleFrom(
-                    elevation: 5,
-                    backgroundColor: const Color.fromRGBO(147, 76, 234, 1),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                child: const Text(
-                  "GET OTP",
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
+              SizedBox(height: 20,),
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                  bottom: 40,
+                ),
+                // height: 40,
+                child: TextField(
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  textAlignVertical: TextAlignVertical.center,
+                  keyboardType: TextInputType.phone,
+                  controller: mobileNo,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w200,
                       fontFamily: 'Poppins',
-                      fontWeight: FontWeight.bold),
+                      fontSize: 15),
+                  decoration:  InputDecoration(
+                    isCollapsed: true,
+                    prefixIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 2,),
+                        Image.asset("assets/images/myindiaflag.png"),
+                        SizedBox(width: 2,),
+                        Text(
+                          "+91",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w200,
+                              fontFamily: 'Poppins',
+                              fontSize: 15),
+                        ),
+                        Icon(Icons.keyboard_arrow_down),
+                        Container(
+                          height:24,
+                          width: 2,
+                          color: ColorResource.black,
+                        ),
+                        SizedBox(width:20,)
+                      ],
+                    ),
+                    hintText: "Enter Mobile No",suffixStyle: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/images/updatetick.png"),
+                  SizedBox(width: 4,),
+                  Text("Get account update on",style:  StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
+                  SizedBox(width: 4,),
+                  Image.asset("assets/images/WhatsApp.png"),
+                  SizedBox(width: 4,),
+                  Text("whatsApp",style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black), )
+                ],
+              ),
+              SizedBox(height: 28,),
+              InkWell(
+                onTap:() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OtpScreen()));},
+                child: Container(
+                  height: 58,
+                  width: 341,
+                  decoration: BoxDecoration(
+                    color: ColorResource.selectLanguageButton,
+                    borderRadius: BorderRadius.circular(75),
+                  ),
+                  child: Center(
+                    child: Text("Login In / Sign up",style:  StyleResource.instance.styleBold(DimensionResource.fontSizeLarge, ColorResource.white),),
+                  ),
+                ),
+              )
+            ],
+          ),
+      ],
         ));
   }
 
@@ -158,32 +182,62 @@ class _SignUpPageState extends State<SignUpPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         currentPage == 0
-            ? const Icon(Icons.circle,
-                size: 13, color: Color.fromRGBO(147, 76, 234, 1))
-            : const Icon(Icons.circle_outlined,
-                size: 13, color: Color.fromRGBO(147, 76, 234, 1)),
+            ? Container(
+          height: 8,
+          width: 44,
+           margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: ColorResource.white
+          ),
+        )
+            : Container(
+          height: 8,
+          width: 44,
+          margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: ColorResource.grey_3.withOpacity(.6),
+          ),
+        ),
         currentPage == 1
-            ? const Padding(
-                padding: EdgeInsets.only(
-                  left: 10.0,
-                  right: 10.0,
-                ),
-                child: Icon(Icons.circle,
-                    size: 13, color: Color.fromRGBO(147, 76, 234, 1)),
-              )
-            : const Padding(
-                padding: EdgeInsets.only(
-                  left: 10.0,
-                  right: 10.0,
-                ),
-                child: Icon(Icons.circle_outlined,
-                    size: 13, color: Color.fromRGBO(147, 76, 234, 1)),
-              ),
+            ?Container(
+          height: 8,
+          width: 44,
+           margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: ColorResource.white
+          ),
+        )
+            : Container(
+          height: 8,
+          width: 44,
+          margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: ColorResource.grey_3.withOpacity(.6),
+          ),
+        ),
         currentPage == 2
-            ? const Icon(Icons.circle,
-                size: 13, color: Color.fromRGBO(147, 76, 234, 1))
-            : const Icon(Icons.circle_outlined,
-                size: 13, color: Color.fromRGBO(147, 76, 234, 1)),
+            ?  Container(
+          height: 8,
+          width: 44,
+           margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: ColorResource.white
+          ),
+        )
+            : Container(
+          height: 8,
+          width: 44,
+          margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: ColorResource.grey_3.withOpacity(.6),
+          ),
+        ),
       ],
     );
   }

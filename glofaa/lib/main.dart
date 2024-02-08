@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:glofaa/delivery_summary_screen.dart';
 import 'package:glofaa/services_status_screen.dart';
+import 'package:glofaa/sign_up_screen.dart';
+import 'package:glofaa/utils/resource/color_resource.dart';
+import 'package:glofaa/utils/resource/dimensions_resource.dart';
+import 'package:glofaa/utils/resource/style_resource.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,10 +24,184 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromRGBO(147, 76, 234, 1)),
         useMaterial3: true,
       ),
-      home: const MyStartPage(),
+      home: const SelectLanguagePage(),
+     // home: const CalculateEarningsScreen(),
     );
   }
 }
+
+
+class SelectLanguagePage extends StatefulWidget {
+  const SelectLanguagePage({super.key});
+
+  @override
+  State<SelectLanguagePage> createState() => _SelectLanguagePageState();
+}
+
+class _SelectLanguagePageState extends State<SelectLanguagePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView(
+        children: [ Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical:48),
+            child: Column(
+              children: [
+                Image.asset("assets/images/welcome_man.png",height: 206,width: 230,),
+                SizedBox(height: MediaQuery.of(context).size.height *0.05,),
+                Image.asset("assets/images/welcom_professional.png",height: 102,width: 290,),
+               const Text("to",style: TextStyle(fontFamily: 'InknutAntiqua',fontSize:30,),),
+                SizedBox(height: MediaQuery.of(context).size.height *0.01,),
+               const  Text("Glofaa Technology",style: TextStyle(fontFamily: 'InknutAntiqua',fontSize:28,),textAlign: TextAlign.center,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.2,),
+                InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=> LanguageScreen()));}, child: _selectButton()),
+              ],
+            ),
+          ),
+        ),
+    ],
+      ),
+    );
+  }
+}
+
+Widget _selectButton(){
+  return Container(
+    height: 56,
+    width: 259,
+    decoration: BoxDecoration(
+      color: ColorResource.selectLanguageButton,
+      borderRadius: BorderRadius.circular(5),
+    ),
+    child: Center(
+      child: Text("Select Language",style:  StyleResource.instance.styleBold(DimensionResource.fontSizeOverLarge, ColorResource.white),),
+    ),
+  );
+}
+
+
+class LanguageScreen extends StatefulWidget {
+  const LanguageScreen({super.key});
+
+  @override
+  State<LanguageScreen> createState() => _LanguageScreenState();
+}
+
+class _LanguageScreenState extends State<LanguageScreen> {
+  int? selectedIndex;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        bottomNavigationBar: Container(
+          height: 82,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              border: Border.all(color: ColorResource.grey_2)
+          ),
+          child: Center(
+            child: InkWell(
+              onTap:() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()));},
+              child: Center(
+                child: Container(
+                  height: 58,
+                  width: 341,
+                  decoration: BoxDecoration(
+                    color: ColorResource.selectLanguageButton,
+                    borderRadius: BorderRadius.circular(75),
+                  ),
+                  child: Center(
+                    child: Text("Continue",style:  StyleResource.instance.styleBold(DimensionResource.fontSizeLarge, ColorResource.white),),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        body : ListView.builder(
+          padding: const EdgeInsets.symmetric(vertical:50),
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Text("English$index",style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
+              trailing: Container(
+                height: 26,
+                width: 27,
+                decoration: BoxDecoration(
+                  color: selectedIndex == index ? ColorResource.selectLanguageButton : ColorResource.white,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: ColorResource.grey_3,width: 2),
+                ),
+                child: Center(
+                  child: selectedIndex == index ? const Icon(Icons.check,color: ColorResource.white,) : null,
+                ),
+              ),
+              onTap: (){
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+            );
+          },
+        )
+    );
+  }
+}
+
+
+Widget languageTile1(BuildContext context, String text,){
+  int? selectedIndex;
+  return ListView.builder(
+    itemCount: 10,
+      itemBuilder: (context, index){
+    return ListTile(
+      leading: Text("text:$index",style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
+      trailing: Container(
+        height: 26,
+        width: 27,
+        decoration: BoxDecoration(
+          color: ColorResource.selectLanguageButton,
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: ColorResource.grey_3,width: 2),
+        ),
+        child: Center(
+          child: selectedIndex == index ? Icon(Icons.check,color: ColorResource.white,) : null,
+        ),
+      ),
+    );
+  });
+}
+
+Widget languageTile(BuildContext context, String text,){
+  int selectedIndex;
+  return ListTile(
+    leading: Text(text,style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
+    trailing: InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const MyStartPage()));
+      },
+      child: Container(
+        height: 26,
+        width: 27,
+        decoration: BoxDecoration(
+          color: ColorResource.selectLanguageButton,
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: ColorResource.grey_3,width: 2),
+        ),
+        child: Center(
+          child: Icon(Icons.check,color: ColorResource.white,),
+        ),
+      ),
+    ),
+  );
+}
+
+
 
 class MyStartPage extends StatefulWidget {
   const MyStartPage({super.key});
