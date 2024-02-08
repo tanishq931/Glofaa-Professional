@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const SelectLanguagePage(),
+     // home: const CalculateEarningsScreen(),
     );
   }
 }
@@ -41,27 +42,25 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical:48),
-          child: Column(
-            children: [
-              Image.asset("assets/images/welcome_man.png",height: 206,width: 230,),
-              SizedBox(height: MediaQuery.of(context).size.height *0.05,),
-              Image.asset("assets/images/welcom_professional.png",height: 102,width: 290,),
-              SizedBox(height: MediaQuery.of(context).size.height *0.02,),
-              Text("to",style: TextStyle(fontFamily: 'InknutAntiqua',fontSize:30,),),
-              SizedBox(height: MediaQuery.of(context).size.height *0.01,),
-              Text("Glofaa Technology",style: TextStyle(fontFamily: 'InknutAntiqua',fontSize:28,),textAlign: TextAlign.center,),
-              SizedBox(height: MediaQuery.of(context).size.height *0.1,),
-              InkWell(
-                  onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=> LanguageScreen()));
-                  },
-                  child: _selectButton()),
-            ],
+      body: ListView(
+        children: [ Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical:48),
+            child: Column(
+              children: [
+                Image.asset("assets/images/welcome_man.png",height: 206,width: 230,),
+                SizedBox(height: MediaQuery.of(context).size.height *0.05,),
+                Image.asset("assets/images/welcom_professional.png",height: 102,width: 290,),
+               const Text("to",style: TextStyle(fontFamily: 'InknutAntiqua',fontSize:30,),),
+                SizedBox(height: MediaQuery.of(context).size.height *0.01,),
+               const  Text("Glofaa Technology",style: TextStyle(fontFamily: 'InknutAntiqua',fontSize:28,),textAlign: TextAlign.center,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.2,),
+                InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=> LanguageScreen()));}, child: _selectButton()),
+              ],
+            ),
           ),
         ),
+    ],
       ),
     );
   }
@@ -81,6 +80,7 @@ Widget _selectButton(){
   );
 }
 
+
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
 
@@ -89,70 +89,93 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
+  int? selectedIndex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        height: 82,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            border: Border.all(color: ColorResource.grey_2)
-        ),
-        child: Center(
-          child: InkWell(
-            onTap:() {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignUpPage()));},
-            child: Center(
-              child: Container(
-                height: 58,
-                width: 341,
-                decoration: BoxDecoration(
-                  color: ColorResource.selectLanguageButton,
-                  borderRadius: BorderRadius.circular(75),
-                ),
-                child: Center(
-                  child: Text("Continue",style:  StyleResource.instance.styleBold(DimensionResource.fontSizeLarge, ColorResource.white),),
+        bottomNavigationBar: Container(
+          height: 82,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              border: Border.all(color: ColorResource.grey_2)
+          ),
+          child: Center(
+            child: InkWell(
+              onTap:() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()));},
+              child: Center(
+                child: Container(
+                  height: 58,
+                  width: 341,
+                  decoration: BoxDecoration(
+                    color: ColorResource.selectLanguageButton,
+                    borderRadius: BorderRadius.circular(75),
+                  ),
+                  child: Center(
+                    child: Text("Continue",style:  StyleResource.instance.styleBold(DimensionResource.fontSizeLarge, ColorResource.white),),
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 16,horizontal: 16),
-        child: ListView(
-          children: [
-            Text("SELECT LANGUAGE",style: StyleResource.instance.styleBold(DimensionResource.fontSizeLarge, ColorResource.black),),
-            SizedBox(height: MediaQuery.of(context).size.height *0.02,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-            languageTile(context,"English"),
-            const Divider(thickness: 2,),
-          ],
-        ),
-      ),
+        body : ListView.builder(
+          padding: const EdgeInsets.symmetric(vertical:50),
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Text("English$index",style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
+              trailing: Container(
+                height: 26,
+                width: 27,
+                decoration: BoxDecoration(
+                  color: selectedIndex == index ? ColorResource.selectLanguageButton : ColorResource.white,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: ColorResource.grey_3,width: 2),
+                ),
+                child: Center(
+                  child: selectedIndex == index ? const Icon(Icons.check,color: ColorResource.white,) : null,
+                ),
+              ),
+              onTap: (){
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+            );
+          },
+        )
     );
   }
 }
 
+
+Widget languageTile1(BuildContext context, String text,){
+  int? selectedIndex;
+  return ListView.builder(
+    itemCount: 10,
+      itemBuilder: (context, index){
+    return ListTile(
+      leading: Text("text:$index",style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
+      trailing: Container(
+        height: 26,
+        width: 27,
+        decoration: BoxDecoration(
+          color: ColorResource.selectLanguageButton,
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: ColorResource.grey_3,width: 2),
+        ),
+        child: Center(
+          child: selectedIndex == index ? Icon(Icons.check,color: ColorResource.white,) : null,
+        ),
+      ),
+    );
+  });
+}
+
 Widget languageTile(BuildContext context, String text,){
+  int selectedIndex;
   return ListTile(
     leading: Text(text,style: StyleResource.instance.styleRegular(DimensionResource.fontSizeLarge, ColorResource.black),),
     trailing: InkWell(

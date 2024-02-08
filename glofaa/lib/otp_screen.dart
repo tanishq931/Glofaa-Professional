@@ -23,7 +23,7 @@ class _OtpScreenState extends State<OtpScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: 40),
+        margin: EdgeInsets.symmetric(vertical: 40,horizontal: 16),
         child: ListView(
           children: [Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +61,19 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffd9d9d9)),
+                        color: ColorResource.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1.0, // soften the shadow
+                            spreadRadius: 1.0, //extend the shadow
+                            offset: Offset(
+                              1.0, // Move to right 5  horizontally
+                              2.0, // Move to bottom 5 Vertically
+                            ),
+                          )
+                        ],
+                      ),
                       child: TextField(
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
@@ -104,7 +116,19 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffd9d9d9)),
+                        color: ColorResource.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1.0, // soften the shadow
+                            spreadRadius: 1.0, //extend the shadow
+                            offset: Offset(
+                              1.0, // Move to right 5  horizontally
+                              2.0, // Move to bottom 5 Vertically
+                            ),
+                          )
+                        ],
+                      ),
                       child: TextField(
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
@@ -147,7 +171,19 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffd9d9d9)),
+                        color: ColorResource.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1.0, // soften the shadow
+                            spreadRadius: 1.0, //extend the shadow
+                            offset: Offset(
+                              1.0, // Move to right 5  horizontally
+                              2.0, // Move to bottom 5 Vertically
+                            ),
+                          )
+                        ],
+                      ),
                       child: TextField(
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
@@ -189,7 +225,19 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffd9d9d9)),
+                          color: ColorResource.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1.0, // soften the shadow
+                            spreadRadius: 1.0, //extend the shadow
+                            offset: Offset(
+                              1.0, // Move to right 5  horizontally
+                              2.0, // Move to bottom 5 Vertically
+                            ),
+                          )
+                        ],
+                      ),
                 child: TextField(
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
@@ -229,7 +277,7 @@ class _OtpScreenState extends State<OtpScreen> {
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("assets/images/Restart.png"),
+                  Image.asset("assets/images/Restart.png",color: ColorResource.selectLanguageButton,),
                   SizedBox(
                     width: 10,
                   ),
@@ -248,7 +296,7 @@ class _OtpScreenState extends State<OtpScreen> {
               Container(
                 width: double.infinity,
                 height: 26,
-                color: Colors.lightGreen,
+                color:Color.fromRGBO(248,250,250,255),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -10,6 +10,7 @@ class ChooseCityScreen extends StatefulWidget {
 
 class _ChooseCityScreenState extends State<ChooseCityScreen> {
   dynamic g1;
+  int? selectedIndex;
   var searchQuery = TextEditingController();
 
   @override
@@ -100,9 +101,14 @@ class _ChooseCityScreenState extends State<ChooseCityScreen> {
                                   border: Border.all(color: ColorResource.grey_3)
                               ),
                               child: Center(
-                                child: Image.asset("assets/images/Done.png"),
+                                child: selectedIndex == index ?Image.asset("assets/images/Done.png"):null,
                               ),
                             ),
+                          onTap: (){
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
                             dense: true,
                             contentPadding: EdgeInsets.zero,
                           ),
